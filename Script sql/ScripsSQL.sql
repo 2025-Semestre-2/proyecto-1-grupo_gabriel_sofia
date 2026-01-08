@@ -57,7 +57,9 @@ CREATE TABLE TipoHabitacion
 		Comodidades(IdComodidades),
 	Precio INT NOT NULL,
 	IdTipoCama INT NOT NULL FOREIGN KEY REFERENCES
-		TipoCama(IdTipoCama)
+		TipoCama(IdTipoCama),
+	IdHospedaje INT NOT NULL FOREIGN KEY REFERENCES
+		Hospedaje(CedulaJuridica)
 );
 
 CREATE TABLE Habitacion
@@ -254,4 +256,5 @@ SELECT * FROM Factura;
 
 SELECT * FROM TipoActividad;
 SELECT * FROM ActividadRecreacion;
+
 
