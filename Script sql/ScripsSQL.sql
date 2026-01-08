@@ -147,9 +147,8 @@ CREATE TABLE ActividadRecreacion
 
 
 --INSERTS PARA PROBAR
-/* ===== CATÁLOGOS ===== */
+--Catalogos
 
-/* 1) Catálogos con IDENTITY: NO meter el ID */
 INSERT INTO THospedaje (Nombre)
 VALUES ('Hotel'), ('Cabina'), ('Hostel');
 
@@ -162,48 +161,41 @@ INSERT INTO TipoCama (Tipos)
 VALUES ('Individual'), ('Matrimonial'), ('Queen');
 
 INSERT INTO Comodidades (ListaComodidades)
-VALUES ('Aire acondicionado'), ('TV'), ('Caja fuerte'), ('Balcón');
+VALUES ('Aire acondicionado'), ('TV'), ('Caja fuerte'), ('BalcÃ³n');
 
 INSERT INTO TipoIdentificacion (Tipo)
-VALUES ('Cédula'), ('Pasaporte');
+VALUES ('CÃ©dula'), ('Pasaporte');
 
 INSERT INTO MetodoPago (Metodos)
 VALUES ('Efectivo'), ('Tarjeta'), ('SINPE');
 
-/* Servicios también es IDENTITY */
 INSERT INTO Servicios (Servicios)
 VALUES ('WiFi'), ('Parqueo'), ('Desayuno'), ('Piscina');
 
-/* TipoActividad es IDENTITY */
 INSERT INTO TipoActividad (Tipo, Descripcion)
 VALUES ('Aventura', 'Actividades al aire libre'),
        ('Cultural', 'Tours y experiencias culturales'),
        ('Relax',    'Actividades de descanso');
 
 
-/* ===== TABLAS PRINCIPALES ===== */
+--Tablas Principales
 
 -- Hospedaje (ojo: CedulaJuridica NO es identity, se pone manual)
--- Tipo: 1..n según lo insertado en THospedaje
--- Redes: 1..n según RedesSociales
--- Servicios: 1..n según Servicios
+-- Tipo: 1..n segÃºn lo insertado en THospedaje
+-- Redes: 1..n segÃºn RedesSociales
+-- Servicios: 1..n segÃºn Servicios
 INSERT INTO Hospedaje
 (CedulaJuridica, Nombre, Tipo, Direccion, GPS, Telefono, Correo, URL, Redes, Servicios)
 VALUES
-(310100111, 'Hotel Paraíso', 1, 'Alajuela Centro', '10.016,-84.214', 88887777, 'contacto@paraiso.com', 'https://paraiso.com', 1, 1),
-(310100222, 'Cabinas La Montaña', 2, 'Cartago, Oreamuno', '9.940,-83.964', 22223333, 'info@montana.com', 'https://montana.com', 2, 2);
+(310100111, 'Hotel ParaÃ­so', 1, 'Cahuita', '10.016,-84.214', 88887777, 'contacto@paraiso.com', 'https://paraiso.com', 1, 1),
+(310100222, 'Cabinas La MontaÃ±a', 2, 'Puerto Viejo', '9.940,-83.964', 22223333, 'info@montana.com', 'https://montana.com', 2, 2);
 
--- TipoHabitacion (IdTipo NO es identity: ponelo manual)
--- Comodidades: FK a Comodidades
--- IdTipoCama: FK a TipoCama
 INSERT INTO TipoHabitacion
 (IdTipo, Nombre, Descripcion, Fotos, Comodidades, Precio, IdTipoCama)
 VALUES
-(101, 'Estándar', 'Habitación básica', 'std1.jpg', 2, 45000, 2),
-(102, 'Suite', 'Habitación amplia', 'suite1.jpg', 1, 85000, 3);
+(101, 'EstÃ¡ndar', 'HabitaciÃ³n bÃ¡sica', 'std1.jpg', 2, 45000, 2),
+(102, 'Suite', 'HabitaciÃ³n amplia', 'suite1.jpg', 1, 85000, 3);
 
--- Habitacion (IdHabitacion NO es identity: manual)
--- Estado: lo dejaste INT sin catálogo, usamos 1=Disponible, 0=Ocupada (o el criterio que quieras)
 INSERT INTO Habitacion
 (IdHabitacion, IdTipo, Estado)
 VALUES
@@ -215,8 +207,8 @@ VALUES
 INSERT INTO Cliente
 (IdCliente, Nombre, PApellido, SApellido, FNacimiento, TipoId, Residencia, Direccion, Telefono1, Telefono2, Correo)
 VALUES
-(1001, 'Ana', 'López', 'Jiménez', '2003-05-10', 1, 'Costa Rica', 'Heredia, Barva', 88881111, 88882222, 'ana.lopez@email.com'),
-(1002, 'Carlos', 'Pérez', 'Soto', '2001-11-22', 2, 'Panamá', 'San José, Escazú', 77771111, 77772222, 'carlos.perez@email.com');
+(1001, 'Ana', 'LÃ³pez', 'JimÃ©nez', '2003-05-10', 1, 'Costa Rica', 'Heredia, Barva', 88881111, 88882222, 'ana.lopez@email.com'),
+(1002, 'Carlos', 'PÃ©rez', 'Soto', '2001-11-22', 2, 'PanamÃ¡', 'San JosÃ©, EscazÃº', 77771111, 77772222, 'carlos.perez@email.com');
 
 -- Reservacion (NumReservacion es identity)
 INSERT INTO Reservacion
@@ -234,12 +226,12 @@ VALUES
 ('2025-01-11', 2, 0, 2, 170000, 3);
 
 -- ActividadRecreacion
--- TipoServicio referencia Servicios (o sea: WiFi/Parqueo/etc). Es raro pero así está tu modelo.
+-- TipoServicio referencia Servicios (o sea: WiFi/Parqueo/etc). Es raro pero asÃ­ estÃ¡ tu modelo.
 INSERT INTO ActividadRecreacion
 (CedulaJuridica, Nombre, Correo, Telefono, NombreContacto, Direccion, TipoActividad, TipoServicio, Descripcion, Precio)
 VALUES
-(310200111, 'Aventuras CR', 'hola@aventurascr.com', 88889999, 'María Rojas', 'La Fortuna', 1, 2, 'Tour de canopy', 35000),
-(310200222, 'Relax Spa', 'info@relaxspa.com', 22224444, 'José Mora', 'Tamarindo', 3, 1, 'Masaje relajante', 30000);
+(310200111, 'Aventuras CR', 'hola@aventurascr.com', 88889999, 'MarÃ­a Rojas', 'La Fortuna', 1, 2, 'Tour de canopy', 35000),
+(310200222, 'Relax Spa', 'info@relaxspa.com', 22224444, 'JosÃ© Mora', 'Tamarindo', 3, 1, 'Masaje relajante', 30000);
 
 --SELECTS PARA VERIFICAR
 SELECT * FROM THospedaje;
@@ -262,3 +254,4 @@ SELECT * FROM Factura;
 
 SELECT * FROM TipoActividad;
 SELECT * FROM ActividadRecreacion;
+
