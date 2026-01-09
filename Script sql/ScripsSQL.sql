@@ -79,12 +79,6 @@ CREATE TABLE EstadoHabitacion (
 	NombreEstado VARCHAR(15)NOT NULL UNIQUE
 );
 
-CREATE TABLE EstadoReserva
-(
-    IdEstado INT IDENTITY(1,1) PRIMARY KEY,
-    NombreEstado VARCHAR(20) NOT NULL UNIQUE  
-);
-
 CREATE TABLE Hospedaje
 (
 	IdHospedaje INT IDENTITY (1,1) PRIMARY KEY,
@@ -261,3 +255,4 @@ CREATE TABLE ActividadRecreacionTipo
     FOREIGN KEY (IdTipoActividad) REFERENCES 
 	    TipoActividad(IdTipoActividad)
 );
+
