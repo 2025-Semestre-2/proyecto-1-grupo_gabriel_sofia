@@ -1,5 +1,5 @@
 CREATE DATABASE SistemaGestion;
-USE SistemaGestiones;
+USE SistemaGestion;
 CREATE TABLE THospedaje
 (
 	IdTipoCatalogo INT IDENTITY(1,1)PRIMARY KEY,
@@ -256,5 +256,6 @@ SELECT * FROM Factura;
 
 SELECT * FROM TipoActividad;
 SELECT * FROM ActividadRecreacion;
+
 
 
