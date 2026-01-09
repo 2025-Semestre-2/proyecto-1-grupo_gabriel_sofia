@@ -4,6 +4,6 @@
 Gabriel Elias Garro Cruz - 2024227539
 Sofia Elena Barrantes Miranda - 2024247378
 
-### Estado del proyecto:
+### Estado del proyecto: Buena/Muy buena
 ### Enlace del video:
 Recordar que el video debe ser público para ser visto por el profesor
