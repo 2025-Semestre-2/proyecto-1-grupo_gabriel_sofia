@@ -82,7 +82,7 @@ CREATE TABLE EstadoHabitacion (
 CREATE TABLE Hospedaje
 (
 	IdHospedaje INT IDENTITY (1,1) PRIMARY KEY,
-	CedulaJuridica INT PRIMARY KEY UNIQUE NOT NULL,
+	CedulaJuridica INT UNIQUE NOT NULL,
 	Nombre varchar(50) NOT NULL,
 	Tipo INT NOT NULL FOREIGN KEY REFERENCES 
 		THospedaje(IdTipoCatalogo),
@@ -255,4 +255,5 @@ CREATE TABLE ActividadRecreacionTipo
     FOREIGN KEY (IdTipoActividad) REFERENCES 
 	    TipoActividad(IdTipoActividad)
 );
+
 
